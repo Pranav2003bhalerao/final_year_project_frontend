@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Settings - Cardiac.ai</title>
+    <title>Patient Management - Cardiac.ai</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap"
       rel="stylesheet"
@@ -57,7 +57,7 @@
         text-align: center;
       }
 
-      .sideimg{
+      .sideimg {
         margin-left: 20px;
       }
 
@@ -84,7 +84,7 @@
       }
 
       .nav-menu li {
-        margin-bottom: 4px;
+        margin-bottom: 20px;
       }
 
       .nav-menu li a {
@@ -107,9 +107,6 @@
         width: 30px;
         margin-right: 10px;
       }
-
-      
-
       .top-bar {
         display: flex;
         justify-content: space-between;
@@ -131,47 +128,17 @@
         align-items: center;
       }
 
-      .top-bar .icons .icon-container {
-        position: relative;
-        margin-right: 20px;
-      }
-
       .top-bar .icons img {
         width: 30px;
         cursor: pointer;
       }
 
-      .dropdown {
-        display: none; /* Hidden by default */
-        position: absolute;
-        top: 40px; /* Adjust based on your design */
-        right: 0;
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        z-index: 1000;
-        min-width: 150px; /* Minimum width to prevent wrapping */
-        white-space: nowrap; /* Prevent wrapping */
-      }
-
-      .dropdown a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #333;
-      }
-
-      .dropdown a:hover {
-        background-color: #f06292;
-        color: white;
-      }
-
       .banner {
-        width: 96.8%;
-        height: 50px;
+        width: 97%;
+        height: 55px;
         background-color: #00695c;
         color: white;
-        border-radius: 10px;
+        border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -185,57 +152,55 @@
       }
 
       .banner img {
-        height: 120%;
+        height: 100%;
         border-radius: 50%;
         margin-right: 20px;
       }
 
-      .settings-section {
+      .patients-list {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .patient-card {
         background-color: #ffffff;
-        padding: 20px;
-        border-radius: 20px;
+        border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
+        padding: 15px;
+        text-align: center;
       }
 
-      .settings-section h3 {
-        margin: 0 0 10px;
+      .patient-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
       }
 
-      .setting-item {
-        margin-bottom: 15px;
+      .patient-card h4 {
+        margin: 0;
+        color: #f06292;
       }
 
-      .setting-item label {
-        display: block;
-        margin-bottom: 5px;
+      .patient-card p {
+        margin: 5px 0;
+        color: #666;
       }
 
-      .setting-item input {
-        width: 50%;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #cccccc;
-      }
-
-      .setting-item select {
-        width: 52.4%;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #cccccc;
-      }
-
-      .submit-button {
+      .button {
         background-color: #f06292;
         color: white;
         border: none;
-        padding: 10px;
+        padding: 10px 15px;
         border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
         margin-top: 10px;
       }
 
-      .submit-button:hover {
+      .button:hover {
         background-color: #d81b60;
       }
     </style>
@@ -244,7 +209,8 @@
     <div class="container">
       <!-- Sidebar -->
       <div class="sidebar">
-        <img class="sideimg"
+        <img
+          class="sideimg"
           src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut"
           alt="Cardiac.ai Logo"
         />
@@ -252,39 +218,30 @@
         <nav class="nav-menu">
           <ul>
             <li>
-              <a href="patienthome.html"
+              <a href="doctorhome.html"
                 ><img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s"
-                  alt="Home Icon"
+                  alt="Dashboard Icon"
                 />
-                Home</a
+                Dashboard</a
               >
             </li>
             <li>
-              <a href="my_health.html"
+              <a href="patientmanagement.html"
                 ><img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPlf24gFqWAIuXdadCogC2d5xBQYTJz-PqYw&s"
-                  alt="My Health Icon"
+                  alt="Patient Management Icon"
                 />
-                My Health</a
+                Patient Management</a
               >
             </li>
             <li>
-              <a href="alert.html"
+              <a href="logout.html"
                 ><img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZsINkvWR9fZjHJkOokYmcl_lUrIk_XRYnkw&s"
-                  alt="Alerts Icon"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpA9ZYcf7KeNlRoM7A5J2raoo6TLQA3futjw&s"
+                  alt="Logout Icon"
                 />
-                Alerts</a
-              >
-            </li>
-            <li>
-              <a href="settings.html"
-                ><img
-                  src="https://thumbs.dreamstime.com/b/settings-icon-gear-vector-symbol-illustration-web-sites-our-mobile-151065571.jpg"
-                  alt="Setting Icon"
-                />
-                Settings</a
+                Log-Out</a
               >
             </li>
           </ul>
@@ -294,132 +251,122 @@
       <!-- Main Content -->
       <div class="main-content">
         <div class="top-bar">
-          <input type="text" placeholder="Search by name" aria-label="Search" />
+          <input type="text" placeholder="Search by patient name" />
           <div class="icons">
-            <div
-              class="icon-container"
-              onclick="toggleDropdown('callDropdown')"
-            >
+            <div class="icon-container">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYOOfsnALGKUSKbIeEWZZLpMBsQbHpSIE1A&s"
                 alt="Call Icon"
               />
-              <div id="callDropdown" class="dropdown">
-                <a href="#">Call History</a>
-                <a href="#">Start a Call</a>
-              </div>
             </div>
-            <div
-              class="icon-container"
-              onclick="toggleDropdown('userDropdown')"
-            >
+            <div class="icon-container">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5PJ0YhcsnhpSO523cL4YfggXFa9J4EB2Fg&s"
                 alt="User Icon"
               />
-              <div id="userDropdown" class="dropdown">
-                <a href="#">Profile</a>
-                <a href="#" onclick="logout()">Logout</a>
-              </div>
             </div>
           </div>
         </div>
 
         <div class="banner">
-          <h1>Settings</h1>
+          <h1>Patient Management</h1>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2"
-            alt="User Image"
+            alt="Doctor"
           />
         </div>
 
-        <!-- Account Settings -->
-        <div class="settings-section">
-          <h3>Account Settings</h3>
-          <div class="setting-item">
-            <label for="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Enter your username"
-            />
+        <div class="patients-list">
+          <div class="patient-card">
+            <img src="https://via.placeholder.com/80" alt="John Doe" />
+            <h4>John Doe</h4>
+            <p>Status: Good</p>
+            <p>ECG Reading: 72 bpm</p>
+            <button class="button" onclick="showECGGraph('John Doe')">
+              Show ECG Graph
+            </button>
+            <button class="button" onclick="redirectToReport()">
+                Generate Report
+            </button>
           </div>
-          <div class="setting-item">
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter your email" />
+          <div class="patient-card">
+            <img src="https://via.placeholder.com/80" alt="Jane Smith" />
+            <h4>Jane Smith</h4>
+            <p>Status: Monitor</p>
+            <p>ECG Reading: 78 bpm</p>
+            <button class="button" onclick="showECGGraph('Jane Smith')">
+              Show ECG Graph
+            </button>
+            <button class="button" onclick="redirectToReport()">
+                Generate Report
+            </button>
           </div>
-          <div class="setting-item">
-            <button class="submit-button">Update Account</button>
+          <div class="patient-card">
+            <img src="https://via.placeholder.com/80" alt="Mark Johnson" />
+            <h4>Mark Johnson</h4>
+            <p>Status: Needs Attention</p>
+            <p>ECG Reading: 85 bpm</p>
+            <button class="button" onclick="showECGGraph('Mark Johnson')">
+              Show ECG Graph
+            </button>
+            
+            <button class="button" onclick="redirectToReport()">
+                Generate Report
+            </button>
           </div>
-        </div>
-
-        <!-- Health Monitoring Preferences -->
-        <div class="settings-section">
-          <h3>Health Monitoring Preferences</h3>
-          <div class="setting-item">
-            <label for="ecg-notification">ECG Abnormality Alerts:</label>
-            <select id="ecg-notification">
-              <option value="email">Email Notifications</option>
-              <option value="sms">SMS Notifications</option>
-              <option value="both">Both</option>
-              <option value="none">None</option>
-            </select>
+          <div class="patient-card">
+            <img src="https://via.placeholder.com/80" alt="Emily Davis" />
+            <h4>Emily Davis</h4>
+            <p>Status: Good</p>
+            <p>ECG Reading: 70 bpm</p>
+            <button class="button" onclick="showECGGraph('Emily Davis')">
+              Show ECG Graph
+            </button>
+            <button class="button" onclick="redirectToReport()">
+                Generate Report
+            </button>
           </div>
-          <div class="setting-item">
-            <label for="bmi-notification">BMI Change Alerts:</label>
-            <select id="bmi-notification">
-              <option value="email">Email Notifications</option>
-              <option value="sms">SMS Notifications</option>
-              <option value="both">Both</option>
-              <option value="none">None</option>
-            </select>
-          </div>
-          <div class="setting-item">
-            <button class="submit-button">Update Preferences</button>
-          </div>
+          <!-- Add more patient cards as needed -->
+           
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis explicabo quaerat dolore quas reiciendis voluptate. Officiis temporibus qui, eveniet aspernatur aliquam minima vel veritatis consequatur, ex, quod iste facere. Reprehenderit.
+        </p>
+    
+    </div>
         </div>
       </div>
     </div>
 
     <script>
-      function toggleDropdown(dropdownId) {
-        const dropdowns = document.querySelectorAll(".dropdown");
-        dropdowns.forEach((dropdown) => {
-          if (dropdown.id !== dropdownId) {
-            dropdown.style.display = "none"; // Hide other dropdowns
-          }
+      // Function to display ECG graph (placeholder for actual implementation)
+      function showECGGraph(patientName) {
+        alert("Displaying ECG graph for " + patientName);
+      }
+
+      // Toggle dropdown for call and user icons
+      document.querySelectorAll(".icon-container").forEach((container) => {
+        container.addEventListener("click", function (event) {
+          const dropdown = this.querySelector(".dropdown");
+          dropdown.style.display =
+            dropdown.style.display === "block" ? "none" : "block";
+          event.stopPropagation();
         });
-        const dropdown = document.getElementById(dropdownId);
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block"; // Toggle the selected dropdown
-      }
+      });
 
-      function logout() {
-        // Send a logout request to the server
-        fetch("/logout", { method: "POST", credentials: "include" })
-          .then((response) => {
-            if (response.ok) {
-              // Redirect to the login page or home page after logout
-              window.location.href = "login.html"; // Change this to your login page
-            } else {
-              alert("Logout failed. Please try again.");
-            }
-          })
-          .catch((error) => {
-            console.error("Error during logout:", error);
-            alert("Logout failed. Please try again.");
-          });
-      }
-
-      // Optional: Close dropdown if clicked outside
+      // Close dropdowns if clicked outside
       window.onclick = function (event) {
         if (!event.target.matches(".icon-container img")) {
           const dropdowns = document.querySelectorAll(".dropdown");
           dropdowns.forEach((dropdown) => {
-            dropdown.style.display = "none"; // Hide all dropdowns
+            dropdown.style.display = "none";
           });
         }
       };
+
+      function redirectToReport() {
+            window.location.href = 'report.html'; // Change this to your report page URL
+        }
     </script>
   </body>
 </html>
