@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management - Cardiac.ai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #F5F5F5;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar img {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2em;
+            color: #F06292;
+            margin-bottom: 40px;
+        }
+
+        .nav-menu {
+            width: 100%;
+        }
+
+        .nav-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 20px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #F06292;
+            color: #FFFFFF;
+        }
+
+        .nav-menu li img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .main-content {
+            width: 80%;
+            padding: 20px;
+            background-color: #F5F5F5;
+            overflow-y: auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar input[type="text"] {
+            width: 30%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #CCCCCC;
+            outline: none;
+            font-size: 1.2em;
+        }
+
+        .top-bar .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar .icons img {
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .banner {
+            width: 100%;
+            height: 200px;
+            background-color: #00695C;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .banner img {
+            height: 100%;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .patients-list {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .patient-card {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .patient-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .patient-card h4 {
+            margin: 0;
+            color: #F06292;
+        }
+
+        .patient-card p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .button {
+            background-color: #F06292;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #D81B60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+            <h2>Cardiac.ai</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="doctorhome.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s" alt="Dashboard Icon"> Dashboard</a></li>
+                    <li><a href="patientmanagement.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPlf24gFqWAIuXdadCogC2d5xBQYTJz-PqYw&s" alt="Patient Management Icon"> Patient Management</a></li>
+                    <li><a href="logout.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpA9ZYcf7KeNlRoM7A5J2raoo6TLQA3futjw&s" alt="Logout Icon"> Log-Out</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <input type="text" placeholder="Search by patient name">
+                <div class="icons">
+                    <div class="icon-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYOOfsnALGKUSKbIeEWZZLpMBsQbHpSIE1A&s" alt="Call Icon">
+                    </div>
+                    <div class="icon-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5PJ0YhcsnhpSO523cL4YfggXFa9J4EB2Fg&s" alt="User Icon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner">
+                <h1>Patient Management</h1>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="Doctor">
+            </div>
+
+            <div class="patients-list">
+                <div class="patient-card">
+                    <img src="https://via.placeholder.com/80" alt="John Doe">
+                    <h4>John Doe</h4>
+                    <p>Status: Good</p>
+                    <p>ECG Reading: 72 bpm</p>
+                    <button class="button" onclick="showECGGraph('John Doe')">Show ECG Graph</button>
+                    <a href="report.html" class="button">Generate Report</a>
+                </div>
+                <div class="patient-card">
+                    <img src="https://via.placeholder.com/80" alt="Jane Smith">
+                    <h4>Jane Smith</h4>
+                    <p>Status: Monitor</p>
+                    <p>ECG Reading: 78 bpm</p>
+                    <button class="button" onclick="showECGGraph('Jane Smith')">Show ECG Graph</button>
+                    <a href="report.html" class="button">Generate Report</a>
+                </div>
+                <div class="patient-card">
+                    <img src="https://via.placeholder.com/80" alt="Mark Johnson">
+                    <h4>Mark Johnson</h4>
+                    <p>Status: Needs Attention</p>
+                    <p>ECG Reading: 85 bpm</p>
+                    <button class="button" onclick="showECGGraph('Mark Johnson')">Show ECG Graph</button>
+                    <a href="report.html" class="button">Generate Report</a>
+                </div>
+                <div class="patient-card">
+                    <img src="https://via.placeholder.com/80" alt="Emily Davis">
+                    <h4>Emily Davis</h4>
+                    <p>Status: Good</p>
+                    <p>ECG Reading: 70 bpm</p>
+                    <button class="button" onclick="showECGGraph('Emily Davis')">Show ECG Graph</button>
+                    <a href="report.html" class="button">Generate Report</a>
+                </div>
+                <!-- Add more patient cards as needed -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to display ECG graph (placeholder for actual implementation)
+        function showECGGraph(patientName) {
+            alert('Displaying ECG graph for ' + patientName);
+        }
+
+        // Toggle dropdown for call and user icons
+        document.querySelectorAll('.icon-container').forEach(container => {
+            container.addEventListener('click', function(event) {
+                const dropdown = this.querySelector('.dropdown');
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                event.stopPropagation();
+            });
+        });
+
+        // Close dropdowns if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.icon-container img')) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        };
+    </script>
+</body>
+</html>

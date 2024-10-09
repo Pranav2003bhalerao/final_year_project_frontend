@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Cardiac.ai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 12%;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar img {
+            width: 130px;
+            margin-bottom: 15px;
+            border-radius: 20px; 
+            cursor: pointer;
+            transition: transform 0.8s ease;
+        }
+
+        .sidebar img:hover {
+            transform: scale(1.2);
+        }
+
+        .sidebar h2 {
+            cursor: pointer;
+            font-family: "Nunito", sans-serif;
+            font-size: 2em;
+            color: #f06292;
+            margin-bottom: 4px;
+        }
+
+        .nav-menu {
+            width: 100%;
+        }
+
+        .nav-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 4px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #f06292;
+            color: #ffffff;
+        }
+
+        .nav-menu li img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .main-content {
+            width: 80%;
+            padding: 20px;
+            background-color: #f5f5f5;
+            overflow-y: auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar input[type="text"] {
+            width: 30%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #cccccc;
+            outline: none;
+            font-size: 1.2em;
+        }
+
+        .top-bar .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar .icons .icon-container {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .top-bar .icons img {
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 40px; /* Adjust based on your design */
+            right: 0;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+            min-width: 150px; /* Minimum width to prevent wrapping */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .dropdown a:hover {
+            background-color: #f06292;
+            color: white;
+        }
+
+        .banner {
+            width: 100%;
+            height: 45px;
+            background-color: #00695c;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .banner img {
+            height: 145%;
+            border-radius: 30%;
+            margin-right: 23px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .banner img:hover{
+            transform: scale(1.1);
+        }
+
+        .ecg-graphs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .real-time-graph {
+            height: auto; 
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .real-time-graph img {
+            max-height: 100px; 
+            width: 100%;
+            border-radius: 10px; 
+        }
+
+        .status {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .report {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .graphs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .ecg-graph-card {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 5px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto; 
+        }
+
+        .ecg-graph-card img {
+            max-height: 100px; 
+            width: 100%;
+            border-radius: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+            <h2>Cardiac.ai</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="patienthome.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s" alt="Home Icon"> Home</a></li>
+                    <li><a href="my_health.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPlf24gFqWAIuXdadCogC2d5xBQYTJz-PqYw&s" alt="My Health Icon"> My Health</a></li>
+                    <li><a href="alert.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZsINkvWR9fZjHJkOokYmcl_lUrIk_XRYnkw&s" alt="Alerts Icon"> Alerts</a></li>
+                    <li><a href="settings.html"><img src="https://thumbs.dreamstime.com/b/settings-icon-gear-vector-symbol-illustration-web-sites-our-mobile-151065571.jpg" alt="Setting Icon"> Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <input type="text" placeholder="Search by name" aria-label="Search">
+                <div class="icons">
+                    <div class="icon-container" onclick="toggleDropdown('callDropdown')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYOOfsnALGKUSKbIeEWZZLpMBsQbHpSIE1A&s" alt="Call Icon">
+                        <div id="callDropdown" class="dropdown">
+                            <a href="#">Call History</a>
+                            <a href="#">Start a Call</a>
+                        </div>
+                    </div>
+                    <div class="icon-container" onclick="toggleDropdown('userDropdown')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5PJ0YhcsnhpSO523cL4YfggXFa9J4EB2Fg&s" alt="User Icon">
+                        <div id="userDropdown" class="dropdown">
+                            <a href="#">Profile</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+
+            <div class="banner">
+                <h1>Hello, Patient!</h1>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="Doctor">
+            </div>
+
+            <!-- Real-Time ECG Graph -->
+            <div class="real-time-graph">
+                <h3 style="margin: 0; color: #F06292; text-align: center;">Real-time ECG Graph</h3>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZfB9d5dWtNjZYNlVfABjDCoY0Me9ByEUWA" alt="Real-time ECG Graph">
+                <div class="status" style="color: green;">Status: Good</div>
+                <div class="report">Heart Rate: 70 bpm<br>Blood Pressure: 120/80 mmHg</div>
+            </div>
+
+            <!-- ECG Graphs Container -->
+            <div class="ecg-graphs-container">
+                <div class="graphs-grid">
+                    <div class="ecg-graph-card">
+                        <h4 style="text-align: center;">1 Hour Ago</h4>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZfB9d5dWtNjZYNlVfABjDCoY0Me9ByEUWA" alt="ECG Graph">
+                        <div class="status" style="color: green;">Status: Good</div>
+                        <div class="report">Heart Rate: 72 bpm<br>Blood Pressure: 120/80 mmHg</div>
+                    </div>
+                    <div class="ecg-graph-card">
+                        <h4 style="text-align: center;">2 Hours Ago</h4>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZfB9d5dWtNjZYNlVfABjDCoY0Me9ByEUWA" alt="ECG Graph">
+                        <div class="status" style="color: orange;">Status: Monitor</div>
+                        <div class="report">Heart Rate: 75 bpm<br>Blood Pressure: 118/79 mmHg</div>
+                    </div>
+                    <div class="ecg-graph-card">
+                        <h4 style="text-align: center;">3 Hours Ago</h4>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZfB9d5dWtNjZYNlVfABjDCoY0Me9ByEUWA" alt="ECG Graph">
+                        <div class="status" style="color: red;">Status: Needs Attention</div>
+                        <div class="report">Heart Rate: 80 bpm<br>Blood Pressure: 130/85 mmHg</div>
+                    </div>
+                    <div class="ecg-graph-card">
+                        <h4 style="text-align: center;">4 Hours Ago</h4>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZfB9d5dWtNjZYNlVfABjDCoY0Me9ByEUWA" alt="ECG Graph">
+                        <div class="status" style="color: green;">Status: Good</div>
+                        <div class="report">Heart Rate: 70 bpm<br>Blood Pressure: 115/75 mmHg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(dropdownId) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.id !== dropdownId) {
+                    dropdown.style.display = 'none'; // Hide other dropdowns
+                }
+            });
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggle the selected dropdown
+        }
+
+        function logout() {
+            // Send a logout request to the server
+            fetch('/logout', { method: 'POST', credentials: 'include' })
+                .then(response => {
+                    if (response.ok) {
+                        // Redirect to the login page or home page after logout
+                        window.location.href = 'login.html'; // Change this to your login page
+                    } else {
+                        alert('Logout failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                    alert('Logout failed. Please try again.');
+                });
+        }
+
+        // Optional: Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.icon-container img')) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none'; // Hide all dropdowns
+                });
+            }
+        }
+    </script>
+</body>
+</html>

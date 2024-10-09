@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Health - Cardiac.ai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+       body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background-color: #f5f5f5;
+        overflow: hidden; /* Prevent body scroll if main-content scrolls */
+      }
+
+      .container {
+        display: flex;
+        height: 100vh; /* Full viewport height */
+        width: 100%;
+      }
+
+      .main-content {
+        margin-left: 210px; /* Leave space for the sidebar */
+        padding: 15px;
+        background-color: #f5f5f5;
+        width: calc(100% - 210px); /* Adjust width to account for sidebar */
+        overflow-y: auto; /* Allow scrolling in main content */
+        height: 100vh; /* Full height */
+        box-sizing: border-box; /* Ensure padding does not affect width */
+        overflow-x: hidden;
+      }
+
+      .sidebar {
+        width: 180px; /* Fixed width for the sidebar */
+        height: 100vh; /* Full height of the viewport */
+        background-color: #f9f9f9; /* Sidebar background color */
+        overflow-y: auto; /* Sidebar scrolls only if content overflows */
+        padding: 15px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        position: fixed; /* Fix the sidebar position */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        z-index: 1000;
+        overflow-x: hidden;
+      }
+
+      .sidebar img {
+        width: 100px;
+        margin-bottom: 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: transform 0.8s ease;
+        align-items: center;
+        text-align: center;
+      }
+
+      .sideimg{
+        margin-left: 20px;
+      }
+
+      .sidebar h2 {
+        cursor: pointer;
+        font-family: "Nunito", sans-serif;
+        font-size: 2em;
+        color: #f06292;
+        margin-top: 7px;
+        margin-bottom: 4px;
+      }
+        .nav-menu {
+            width: 100%;
+        }
+
+        .nav-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 4px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #f06292;
+            color: #ffffff;
+        }
+
+        .nav-menu li img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+       
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar input[type="text"] {
+            width: 30%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #cccccc;
+            outline: none;
+            font-size: 1.2em;
+        }
+
+        .top-bar .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar .icons .icon-container {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .top-bar .icons img {
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 40px; /* Adjust based on your design */
+            right: 0;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+            min-width: 150px; /* Minimum width to prevent wrapping */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .dropdown a:hover {
+            background-color: #f06292;
+            color: white;
+        }
+
+        .banner {
+            width: 100%;
+            height: 65px;
+            background-color: #00695c;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .banner img {
+            height: 100%;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .health-box {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .health-box h3 {
+            margin: 0 0 10px;
+        }
+
+        .health-box input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+            border: 1px solid #CCCCCC;
+            margin-bottom: 10px;
+        }
+
+        .graph {
+            width: 100%;
+            height: 20px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .bmi-calculator {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .submit-button {
+            background-color: #F06292;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #D81B60;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img class="sideimg" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+            <h2>Cardiac.ai</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="patienthome.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s" alt="Home Icon"> Home</a></li>
+                    <li><a href="my_health.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPlf24gFqWAIuXdadCogC2d5xBQYTJz-PqYw&s" alt="My Health Icon"> My Health</a></li>
+                    <li><a href="alert.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZsINkvWR9fZjHJkOokYmcl_lUrIk_XRYnkw&s" alt="Alerts Icon"> Alerts</a></li>
+                    <li><a href="settings.html"><img src="https://thumbs.dreamstime.com/b/settings-icon-gear-vector-symbol-illustration-web-sites-our-mobile-151065571.jpg" alt="Setting Icon"> Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <input type="text" placeholder="Search...">
+                <div class="icons">
+                    <div class="icon-container" onclick="toggleDropdown('callDropdown')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYOOfsnALGKUSKbIeEWZZLpMBsQbHpSIE1A&s" alt="Call Icon">
+                        <div id="callDropdown" class="dropdown">
+                            <a href="#">Call History</a>
+                            <a href="#">Start a Call</a>
+                        </div>
+                    </div>
+                    <div class="icon-container" onclick="toggleDropdown('userDropdown')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5PJ0YhcsnhpSO523cL4YfggXFa9J4EB2Fg&s" alt="User Icon">
+                        <div id="userDropdown" class="dropdown">
+                            <a href="#">Profile</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner">
+                <h1>My Health</h1>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="User Image">
+            </div>
+
+            <!-- Health Metrics Boxes -->
+            <div class="health-grid">
+                <div class="health-box">
+                    <h3>Blood Pressure</h3>
+                    <input type="number" placeholder="Systolic (mmHg)" id="systolic">
+                    <input type="number" placeholder="Diastolic (mmHg)" id="diastolic">
+                    <div class="graph" id="bpGraph"></div>
+                    <div class="status" id="bpStatus">Status: Good</div>
+                </div>
+                <div class="health-box">
+                    <h3>Heart Rate</h3>
+                    <input type="number" placeholder="Heart Rate (bpm)" id="heartRate">
+                    <div class="graph" id="hrGraph"></div>
+                    <div class="status" id="hrStatus">Status: Good</div>
+                </div>
+                <div class="health-box">
+                    <h3>Respiratory Rate</h3>
+                    <input type="number" placeholder="Respiratory Rate (breaths/min)" id="respRate">
+                    <div class="graph" id="rrGraph"></div>
+                    <div class="status" id="rrStatus">Status: Good</div>
+                </div>
+                <div class="health-box">
+                    <h3>Body Temperature</h3>
+                    <input type="number" placeholder="Temperature (°F)" id="temp">
+                    <div class="graph" id="tempGraph"></div>
+                    <div class="status" id="tempStatus">Status: Good</div>
+                </div>
+            </div>
+
+            <!-- BMI Calculator -->
+            <div class="bmi-calculator">
+                <h3>BMI Calculator</h3>
+                <input type="number" id="weight" placeholder="Weight (kg)">
+                <input type="number" id="height" placeholder="Height (m)">
+                <button class="submit-button" onclick="calculateBMI()">Calculate BMI</button>
+                <div id="bmiResult" style="margin-top: 10px;"></div>
+                <div id="bmiStatus" style="margin-top: 10px; font-weight: bold;"></div>
+            </div>            
+            <a href="report.html" class="submit-button" style="margin-top: 20px; display: inline-block;">Generate Report</a>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown function
+        function toggleDropdown(dropdownId) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.id !== dropdownId) {
+                    dropdown.style.display = 'none'; // Hide other dropdowns
+                }
+            });
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.addEventListener('click', function (event) {
+            const iconContainers = document.querySelectorAll('.icon-container');
+            iconContainers.forEach(container => {
+                const dropdown = container.querySelector('.dropdown');
+                if (!container.contains(event.target)) {
+                    dropdown.style.display = 'none'; // Close dropdowns when clicking outside
+                }
+            });
+        });
+
+        // Simulated data for real-time updates
+        function updateHealthMetrics() {
+            const systolic = Math.floor(Math.random() * 30 + 110); // Systolic: 110-140
+            const diastolic = Math.floor(Math.random() * 10 + 70); // Diastolic: 70-80
+            const heartRate = Math.floor(Math.random() * 20 + 60); // Heart Rate: 60-80
+            const respRate = Math.floor(Math.random() * 5 + 12); // Respiratory Rate: 12-16
+            const temp = (Math.random() * 2 + 98).toFixed(1); // Temperature: 98-100
+
+            document.getElementById('systolic').value = systolic;
+            document.getElementById('diastolic').value = diastolic;
+            document.getElementById('heartRate').value = heartRate;
+            document.getElementById('respRate').value = respRate;
+            document.getElementById('temp').value = temp;
+
+            // Update status and graph based on values
+            updateStatusAndGraph(systolic, diastolic, heartRate, respRate, temp);
+        }
+
+        function updateStatusAndGraph(systolic, diastolic, heartRate, respRate, temp) {
+            const bpStatus = document.getElementById('bpStatus');
+            const bpGraph = document.getElementById('bpGraph');
+            if (systolic > 130 || diastolic > 80) {
+                bpStatus.textContent = 'Status: Bad';
+                bpGraph.style.background = 'linear-gradient(to right, #FF6347 100%, #4CAF50 0%)';
+            } else {
+                bpStatus.textContent = 'Status: Good';
+                bpGraph.style.background = 'linear-gradient(to right, #4CAF50 100%, #FF6347 0%)';
+            }
+
+            const hrStatus = document.getElementById('hrStatus');
+            const hrGraph = document.getElementById('hrGraph');
+            if (heartRate < 60 || heartRate > 100) {
+                hrStatus.textContent = 'Status: Warning';
+                hrGraph.style.background = 'linear-gradient(to right, #FF6347 100%, #4CAF50 0%)';
+            } else {
+                hrStatus.textContent = 'Status: Good';
+                hrGraph.style.background = 'linear-gradient(to right, #4CAF50 100%, #FF6347 0%)';
+            }
+
+            const rrStatus = document.getElementById('rrStatus');
+            const rrGraph = document.getElementById('rrGraph');
+            if (respRate < 12 || respRate > 20) {
+                rrStatus.textContent = 'Status: Warning';
+                rrGraph.style.background = 'linear-gradient(to right, #FF6347 100%, #4CAF50 0%)';
+            } else {
+                rrStatus.textContent = 'Status: Good';
+                rrGraph.style.background = 'linear-gradient(to right, #4CAF50 100%, #FF6347 0%)';
+            }
+
+            const tempStatus = document.getElementById('tempStatus');
+            const tempGraph = document.getElementById('tempGraph');
+            if (temp < 97 || temp > 99) {
+                tempStatus.textContent = 'Status: Warning';
+                tempGraph.style.background = 'linear-gradient(to right, #FF6347 100%, #4CAF50 0%)';
+            } else {
+                tempStatus.textContent = 'Status: Good';
+                tempGraph.style.background = 'linear-gradient(to right, #4CAF50 100%, #FF6347 0%)';
+            }
+        }
+
+        // Update health metrics every 5 seconds
+        setInterval(updateHealthMetrics, 5000);
+        
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const bmiStatus = document.getElementById('bmiStatus');
+
+            if (weight > 0 && height > 0) {
+                const bmi = (weight / (height * height)).toFixed(2);
+                document.getElementById('bmiResult').innerText = `Your BMI is: ${bmi}`;
+
+                // Determine BMI status
+                if (bmi < 18.5) {
+                    bmiStatus.innerText = 'Status: Underweight';
+                    bmiStatus.style.color = '#FF6347'; // Red for underweight
+                } else if (bmi >= 18.5 && bmi < 24.9) {
+                    bmiStatus.innerText = 'Status: Normal weight';
+                    bmiStatus.style.color = '#4CAF50'; // Green for normal weight
+                } else if (bmi >= 25 && bmi < 29.9) {
+                    bmiStatus.innerText = 'Status: Overweight';
+                    bmiStatus.style.color = '#FFA500'; // Orange for overweight
+                } else {
+                    bmiStatus.innerText = 'Status: Obesity';
+                    bmiStatus.style.color = '#FF6347'; // Red for obesity
+                }
+            } else {
+                document.getElementById('bmiResult').innerText = 'Please enter valid weight and height.';
+                bmiStatus.innerText = '';
+            }
+        }
+
+        function logout() {
+            // Simulate a logout process (e.g., clearing session, redirecting)
+            alert("You have been logged out.");
+            window.location.href = 'login.html'; // Redirect to the login page
+        }
+    </script>
+</body>
+</html>

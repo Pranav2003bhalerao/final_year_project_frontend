@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cardiac. AI Patient Signup</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="3signuppatient.css" />
+    <script src="3signuppatient.js"></script>
+    <style>
+      .required {
+        color: red;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Top Bar with Logo -->
+      <div class="top-bar">
+        <img
+          src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut"
+          alt="Cardiac.ai Logo"
+        />
+        <h1>Cardiac.AI Patient Signup</h1>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="signup-form">
+        <!-- Personal Info Section -->
+        <div class="section personal-info-section">
+          <h3>Personal Info</h3>
+          <div class="inline-group">
+            <div class="full-width">
+              <label for="fullName"
+                >Full Name <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                class="input-fullName personal-input"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+          </div>
+          <div class="inline-group">
+            <div class="half-width">
+              <label for="dob"
+                >Date of Birth <span class="required">*</span></label
+              >
+              <input
+                type="date"
+                class="input-dob personal-input"
+                id="dob"
+                name="dob"
+                required
+              />
+            </div>
+            <div class="half-width">
+              <label for="gender">Gender <span class="required">*</span></label>
+              <select
+                id="gender"
+                class="input-gender personal-input"
+                name="gender"
+                required
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="section address-section">
+            <div class="half-width">
+          <h3>Address</h3>
+          <label for="address"
+            >Residential Address <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="input-address address-input"
+            id="address"
+            name="address"
+            placeholder="Enter your residential address"
+            required
+          />
+        </div>
+          <div class="inline-group">
+            <div class="half-width">
+              <label for="city">City <span class="required">*</span></label>
+              <input
+                type="text"
+                class="input-city address-input"
+                placeholder="Enter Your City"
+                id="city"
+                required
+              />
+            </div>
+            <div class="half-width">
+              <label for="state">State <span class="required">*</span></label>
+              <select
+                id="state"
+                class="input-state address-input"
+                name="state"
+                required
+              >
+                <!-- State options here -->
+                <option value="">Select State</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Andaman and Nicobar Islands">
+                  Andaman and Nicobar Islands
+                </option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">
+                  Dadra and Nagar Haveli and Daman and Diu
+                </option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Puducherry">Puducherry</option>
+              </select>
+            </div>
+          </div>
+          <div class="half-width nation">
+            <label for="nationality"
+              >Nationality <span class="required">*</span></label
+            >
+            <input
+              class="input-nationality address-input"
+              type="text"
+              id="nationality"
+              name="nationality"
+              placeholder="Enter Your Nationality"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Contact Details Section -->
+        <div class="section contact-details-section">
+          <h3>Contact Details</h3>
+          <div class="inline-group-mobile-email">
+            <div class="half-width">
+              <label for="mobile"
+                >Mobile No. <span class="required">*</span></label
+              >
+              <input
+                class="input-mobile contact-input"
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter Your Mobile number"
+                required
+                pattern="\d{10}"
+                title="Mobile number must be 10 digits"
+              />
+            </div>
+            <div class="half-width">
+              <label for="email">Email <span class="required">*</span></label>
+              <input
+                class="input-email contact-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Please enter a valid email address"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Password Section -->
+        <div class="section password-section">
+          <h3>Password</h3>
+          <div class="inline-group">
+            <div class="half-width">
+              <label for="createPassword"
+                >Create Password <span class="required">*</span></label
+              >
+              <input
+                type="password"
+                class="input-password-create password-input"
+                id="createPassword"
+                name="createPassword"
+                placeholder="Create a password"
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+                title="Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character"
+              />
+            </div>
+            <div class="half-width">
+              <label for="confirmPassword"
+                >Confirm Password <span class="required">*</span></label
+              >
+              <input
+                type="password"
+                class="input-password-confirm password-input"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms and Conditions & Submit Button -->
+        <div class="section terms-submit-section">
+          <div class="terms">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms"
+              >I agree to the Terms and Conditions
+              <span class="required">*</span></label
+            >
+          </div>
+          <button class="button" onclick="validateForm(event)">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

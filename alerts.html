@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts - Cardiac.ai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #F5F5F5;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar img {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2em;
+            color: #F06292;
+            margin-bottom: 40px;
+        }
+
+        .nav-menu {
+            width: 100%;
+        }
+
+        .nav-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 20px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #F06292;
+            color: #FFFFFF;
+        }
+
+        .nav-menu li img {
+            width: 25px;
+            margin-right: 10px;
+        }
+
+        .main-content {
+            width: 80%;
+            padding: 20px;
+            background-color: #F5F5F5;
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar input[type="text"] {
+            width: 30%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #CCCCCC;
+            outline: none;
+            font-size: 1.2em;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100px;
+            background-color: #00695C;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        .alert-box {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .alert-box h3 {
+            margin: 0 0 10px;
+        }
+
+        .alert-box p {
+            margin: 5px 0;
+        }
+
+        .send-alert {
+            background-color: #F06292;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .send-alert:hover {
+            background-color: #D81B60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+            <h2>Cardiac.ai</h2>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="home.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s" alt="Home Icon"> Home</a></li>
+                    <li><a href="my_health.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPlf24gFqWAIuXdadCogC2d5xBQYTJz-PqYw&s" alt="My Health Icon"> My Health</a></li>
+                    <li><a href="alerts.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZsINkvWR9fZjHJkOokYmcl_lUrIk_XRYnkw&s" alt="Alerts Icon"> Alerts</a></li>
+                    <li><a href="settings.html"><img src="https://thumbs.dreamstime.com/b/settings-icon-gear-vector-symbol-illustration-web-sites-our-mobile-151065571.jpg" alt="Setting Icon"> Settings</a></li>
+                    <li><a href="logout.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpA9ZYcf7KeNlRoM7A5J2raoo6TLQA3futjw&s" alt="Logout Icon"> Log-Out</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <input type="text" placeholder="Search alerts">
+            </div>
+
+            <div class="banner">
+                <h1>Alerts History</h1>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="User Image" style="height: 60px; border-radius: 50%;">
+            </div>
+
+            <!-- Previous Alerts -->
+            <div class="alert-box">
+                <h3>High Abnormalities of ECG</h3>
+                <p><strong>Alert 1:</strong> High Heart Rate detected at 120 bpm (2 hours ago)</p>
+                <p><strong>Alert 2:</strong> Irregular Heartbeat detected (3 hours ago)</p>
+                <p><strong>Alert 3:</strong> High QRS duration detected (4 hours ago)</p>
+                <p><strong>Alert 4:</strong> Atrial Fibrillation detected (5 hours ago)</p>
+            </div>
+
+            <!-- Send Alert to Doctor -->
+            <button class="send-alert" onclick="sendAlert()">Send Alert to Doctor</button>
+        </div>
+    </div>
+
+    <script>
+        function sendAlert() {
+            const doctorNumber = "+123456789"; // Replace with the actual doctor's number
+            const alertMessage = "Urgent: High abnormalities detected in ECG readings. Please check the patient's status.";
+            const alertLink = `sms:${doctorNumber}?body=${encodeURIComponent(alertMessage)}`;
+            window.location.href = alertLink;
+            alert("Alert sent to doctor!");
+        }
+    </script>
+</body>
+</html>

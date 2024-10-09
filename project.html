@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiac.ai User Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #E0F7FA, #FFFFFF);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .left-section {
+            flex: 1;
+            background: #E0F7FA;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .left-section img {
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .left-section h1 {
+            font-family: 'Nunito', sans-serif;
+            color: #F06292;
+            margin-bottom: 10px;
+        }
+
+        .left-section p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .right-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #E0F7FA;
+        }
+
+        .right-section h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .selection {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .selection-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .selection-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .selection-item:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .selection-item .role {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .next-arrow {
+            margin-top: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #00796B;
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-arrow:hover {
+            background-color: #004D40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+            <h1>Cardiac.ai</h1>
+            <p>Striving to improve community health care and practices</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="Doctors">
+        </div>
+        <div class="right-section">
+            <h2>USER SELECTION</h2>
+            <div class="selection">
+                <div class="selection-item" id="doctorSelection">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM3pZxh19wH8Mxl3g3zSjUoMUihOoyCss8-qb3UaRVQFqTfZ8j" alt="Doctor">
+                    <span class="role">Doctor</span>
+                </div>
+                <div class="selection-item" id="patientSelection">
+                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAT6ATj-w7RVb6AC_Uq0lT-64ZzF1W3lD_Cp_Lw3pvlUqkSx1W" alt="Patient">
+                    <span class="role">Patient</span>
+                </div>
+            </div>
+            <div class="next-arrow" id="nextArrow">➔</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('doctorSelection').addEventListener('click', function() {
+            document.getElementById('nextArrow').style.backgroundColor = '#00796B';
+        });
+
+        document.getElementById('patientSelection').addEventListener('click', function() {
+            document.getElementById('nextArrow').style.backgroundColor = '#00796B';
+        });
+
+        document.getElementById('nextArrow').addEventListener('click', function() {
+            alert('Proceeding to the next step');
+        });
+    </script>
+</body>
+</html>

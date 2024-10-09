@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiac.ai User Selection and Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="1userselection.css">
+</head>
+<body>
+    <div class="container">
+        <!-- User Selection Page -->
+        <div class="section user-selection show" id="userSelection">
+            <div class="left-section">
+                <img class="img-1" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+                <h1>Cardiac.ai</h1>
+                <p>Improve community health care and practices</p>
+                <img class="img-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="Doctors">
+            </div>
+            <div class="right-section">
+                <h2>USER SELECTION</h2>
+                <div class="selection">
+                    <div class="selection-item" id="doctorSelection">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM3pZxh19wH8Mxl3g3zSjUoMUihOoyCss8-qb3UaRVQFqTfZ8j" alt="Doctor">
+                        <span class="role">Doctor</span>
+                    </div>
+                    <div class="selection-item" id="patientSelection">
+                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAT6ATj-w7RVb6AC_Uq0lT-64ZzF1W3lD_Cp_Lw3pvlUqkSx1W" alt="Patient">
+                        <span class="role">Patient</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Doctor Login Page -->
+        <div class="section login" id="doctorLoginPage">
+            <div class="left-section">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+                <h1>Cardiac.ai</h1>
+                <p>Striving to improve community health care and practices</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="Doctors">
+            </div>
+            <div class="right-section">
+                <h2>DOCTOR LOGIN</h2>
+                <form class="login-form" id="doctorLoginForm">
+                    <label for="email">Email</label>
+                    <input type="email" id="doctorEmail" name="email" placeholder="Enter your email" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="doctorPassword" name="password" placeholder="Enter your password" required 
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                        title="Password must be at least 8 characters long, including uppercase, lowercase, number, and special character">
+                    <input type="submit" value="Login">
+                </form>
+                <a href="2signupdoctor.html" class="signup-link">Don't have an account? Sign Up</a>
+                <div id="backArrowDoctor" class="back-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Login Page -->
+        <div class="section login" id="patientLoginPage">
+            <div class="left-section">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo">
+                <h1>Cardiac.ai</h1>
+                <p>Striving to improve community health care and practices</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2" alt="Doctors">
+            </div>
+            <div class="right-section">
+                <h2>PATIENT LOGIN</h2>
+                <form class="login-form" id="patientLoginForm">
+                    <label for="email">Email</label>
+                    <input type="email" id="patientEmail" name="email" placeholder="Enter your email" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="patientPassword" name="password" placeholder="Enter your password" required 
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                        title="Password must be at least 8 characters long, including uppercase, lowercase, number, and special character">
+                    <input type="submit" value="Login">
+                </form>
+                <a href="3signuppatient.html" class="signup-link">Don't have an account? Sign Up</a>
+                <div id="backArrowPatient" class="back-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show Doctor Login Page on doctor selection
+        document.getElementById('doctorSelection').addEventListener('click', function() {
+            document.getElementById('userSelection').classList.remove('show');
+            document.getElementById('doctorLoginPage').classList.add('show');
+        });
+
+        // Show Patient Login Page on patient selection
+        document.getElementById('patientSelection').addEventListener('click', function() {
+            document.getElementById('userSelection').classList.remove('show');
+            document.getElementById('patientLoginPage').classList.add('show');
+        });
+
+        // Back button functionality for Doctor
+        document.getElementById('backArrowDoctor').addEventListener('click', function() {
+            document.getElementById('doctorLoginPage').classList.remove('show');
+            document.getElementById('userSelection').classList.add('show');
+        });
+
+        // Back button functionality for Patient
+        document.getElementById('backArrowPatient').addEventListener('click', function() {
+            document.getElementById('patientLoginPage').classList.remove('show');
+            document.getElementById('userSelection').classList.add('show');
+        });
+
+        // Doctor Login Form Submission
+        document.getElementById('doctorLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            // Redirect to doctor dashboard
+            window.location.href = '4doctordashboard.html';
+        });
+
+        // Patient Login Form Submission
+        document.getElementById('patientLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            // Redirect to patient home
+            window.location.href = 'patienthome.html';
+        });
+    </script>
+</body>
+</html>

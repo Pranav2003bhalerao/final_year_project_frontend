@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Report - Cardiac.ai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #F5F5F5;
+        }
+
+        .report-container {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .report-header img {
+            max-width: 150px;
+        }
+
+        .report-header h1 {
+            font-size: 2em;
+            color: #F06292;
+            margin: 10px 0;
+        }
+
+        .patient-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .content {
+            display: flex;
+        }
+
+        .ecg-graph {
+            width: 50%;
+            height: 300px;
+            background-color: #E0E0E0;
+            border: 1px solid #BDBDBD;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .ecg-description {
+            padding: 10px;
+            border: 1px solid #BDBDBD;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            width: 50%;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <div class="report-header">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGmFL6M_DWZelxqtVjddNnlJii1q9fP01d1uoq7U5GZ_NQ71Ut" alt="Cardiac.ai Logo"> <!-- Replace with your logo URL -->
+            <h1>ECG Report</h1>
+            <p>Date: <strong>September 22, 2024</strong></p>
+        </div>
+
+        <div class="patient-info">
+            <div>
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Age:</strong> 45</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Patient ID:</strong> 123456789</p>
+            </div>
+            <div>
+                <p><strong>Referring Doctor:</strong> Dr. Jane Smith</p>
+                <p><strong>Date of Birth:</strong> January 1, 1979</p>
+                <p><strong>Contact:</strong> (123) 456-7890</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>ECG Graphs</h2>
+            <div class="content">
+                <div class="ecg-graph">
+                    <p style="text-align: center; margin-top: 120px;">[ECG Graph Placeholder]</p>
+                </div>
+                <div class="ecg-description">
+                    <h3>ECG Interpretation</h3>
+                    <p>The ECG shows a normal sinus rhythm. Heart rate is 80 bpm. No significant ST segment changes were noted.</p>
+                    <h3>Measurements</h3>
+                    <p><strong>Heart Rate:</strong> 80 bpm</p>
+                    <p><strong>QRS Duration:</strong> 90 ms</p>
+                    <p><strong>QT Interval:</strong> 400 ms</p>
+                    <p><strong>PR Interval:</strong> 160 ms</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Predicted Description</h2>
+            <p><strong>Analysis:</strong> The patient exhibits signs consistent with mild hypertension. Further evaluation may be needed to rule out any underlying cardiovascular conditions.</p>
+            <p><strong>Recommendations:</strong></p>
+            <ul>
+                <li>Regular follow-ups with a cardiologist.</li>
+                <li>Monitor blood pressure and heart rate regularly.</li>
+                <li>Maintain a heart-healthy lifestyle: diet, exercise, and medication adherence.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Cardiac.ai. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
