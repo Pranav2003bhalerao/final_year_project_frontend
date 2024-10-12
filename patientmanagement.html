@@ -84,7 +84,7 @@
       }
 
       .nav-menu li {
-        margin-bottom: 20px;
+        margin-bottom: 4px;
       }
 
       .nav-menu li a {
@@ -107,6 +107,7 @@
         width: 30px;
         margin-right: 10px;
       }
+
       .top-bar {
         display: flex;
         justify-content: space-between;
@@ -128,14 +129,44 @@
         align-items: center;
       }
 
+      .top-bar .icons .icon-container {
+        position: relative;
+        margin-right: 20px;
+      }
+
       .top-bar .icons img {
         width: 30px;
         cursor: pointer;
       }
 
+      .dropdown {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 40px; /* Adjust based on your design */
+        right: 0;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1000;
+        min-width: 150px; /* Minimum width to prevent wrapping */
+        white-space: nowrap; /* Prevent wrapping */
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .dropdown a:hover {
+        background-color: #f06292;
+        color: white;
+      }
+
       .banner {
         width: 97%;
-        height: 58px;
+        height: 60px;
         background-color: #00695c;
         color: white;
         border-radius: 20px;
@@ -152,7 +183,7 @@
       }
 
       .banner img {
-        height: 100%;
+        height: 90%;
         border-radius: 50%;
         margin-right: 20px;
       }
@@ -218,7 +249,7 @@
         <nav class="nav-menu">
           <ul>
             <li>
-              <a href="doctorhome.html"
+              <a href="4doctordashboard.html"
                 ><img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s"
                   alt="Dashboard Icon"
@@ -236,13 +267,6 @@
               >
             </li>
             <li>
-              <!-- <a href="logout.html"
-                ><img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpA9ZYcf7KeNlRoM7A5J2raoo6TLQA3futjw&s"
-                  alt="Logout Icon"
-                />
-                Log-Out</a
-              > -->
               <a href="1userselection.html">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpA9ZYcf7KeNlRoM7A5J2raoo6TLQA3futjw&s"
@@ -258,19 +282,38 @@
       <!-- Main Content -->
       <div class="main-content">
         <div class="top-bar">
-          <input type="text" placeholder="Search by patient name" />
+          <input type="text" placeholder="Search by name" aria-label="Search" />
           <div class="icons">
-            <div class="icon-container">
+            <!-- Call Icon with Dropdown -->
+            <div
+              class="icon-container"
+              onclick="toggleDropdown('callDropdown')"
+            >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYOOfsnALGKUSKbIeEWZZLpMBsQbHpSIE1A&s"
                 alt="Call Icon"
               />
+              <!-- Call Dropdown Menu -->
+              <div id="callDropdown" class="dropdown">
+                <a href="#">Start a Call</a>
+                <a href="#">Call History</a>
+              </div>
             </div>
-            <div class="icon-container">
+
+            <!-- User Icon with Dropdown -->
+            <div
+              class="icon-container"
+              onclick="toggleDropdown('userDropdown')"
+            >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5PJ0YhcsnhpSO523cL4YfggXFa9J4EB2Fg&s"
                 alt="User Icon"
               />
+              <!-- User Dropdown Menu -->
+              <div id="userDropdown" class="dropdown">
+                <a href="#">Profile</a>
+                <!-- <a href="#" onclick="logout()">Logout</a> -->
+              </div>
             </div>
           </div>
         </div>
@@ -334,23 +377,11 @@
             </button>
           </div>
           <!-- Add more patient cards as needed -->
-
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Perferendis explicabo quaerat dolore quas reiciendis voluptate.
-              Officiis temporibus qui, eveniet aspernatur aliquam minima vel
-              veritatis consequatur, ex, quod iste facere. Reprehenderit.
-            </p>
-          </div>
         </div>
       </div>
     </div>
-    
-      
-      
+
     <script>
-      // Function to display ECG graph (placeholder for actual implementation)
       function showECGGraph(patientName) {
         alert("Displaying ECG graph for " + patientName);
       }
@@ -358,10 +389,17 @@
       // Toggle dropdown for call and user icons
       document.querySelectorAll(".icon-container").forEach((container) => {
         container.addEventListener("click", function (event) {
+          // First, close all dropdowns
+          document.querySelectorAll(".dropdown").forEach((dropdown) => {
+            dropdown.style.display = "none"; // Hide all dropdowns
+          });
+
+          // Then, open the dropdown for the clicked icon
           const dropdown = this.querySelector(".dropdown");
           dropdown.style.display =
             dropdown.style.display === "block" ? "none" : "block";
-          event.stopPropagation();
+
+          event.stopPropagation(); // Prevent event from bubbling up
         });
       });
 
@@ -370,21 +408,42 @@
         if (!event.target.matches(".icon-container img")) {
           const dropdowns = document.querySelectorAll(".dropdown");
           dropdowns.forEach((dropdown) => {
-            dropdown.style.display = "none";
+            dropdown.style.display = "none"; // Hide all dropdowns
           });
         }
       };
 
+      // Function to handle logout action
+      function logout() {
+        // Send a logout request to the server
+        fetch("/logout", { method: "POST", credentials: "include" })
+          .then((response) => {
+            if (response.ok) {
+              // Redirect to the login page after logout
+              window.location.href = "login.html"; // Change this to your login page URL
+            } else {
+              alert("Logout failed. Please try again.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error during logout:", error);
+            alert("Logout failed. Please try again.");
+          });
+      }
+
+      // Function to redirect to the report page
       function redirectToReport() {
         window.location.href = "report.html"; // Change this to your report page URL
       }
+
+      // Function to handle logout and redirect to selection page
       function logoutRedirect(event) {
-        event.preventDefault(); // Prevent the default link behavior
+        event.preventDefault(); // Prevent default link behavior
 
         // Redirect to the login or selection page
         window.location.href = "1userselection.html"; // Change this to your login page URL
 
-        // Clear browser history by replacing state to prevent going back
+        // Clear browser history to prevent going back
         window.history.pushState(null, null, window.location.href);
 
         window.onpopstate = function () {

@@ -2,20 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+  }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #E0F7FA, #FFFFFF);
-    min-height: 100vh; 
+  body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
-    overflow-y: auto; 
-    padding: 20px; 
-}
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 20px;
+  }
 
-.container {
+  .container {
     width: 100%;
     max-width: 800px;
     background-color: white;
@@ -23,35 +23,35 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     position: relative; /* To allow absolute positioning inside */
-}
+  }
 
-.top-bar {
+  .top-bar {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #E0F7FA;
+    background-color: #e0f7fa;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
-}
+  }
 
-.top-bar img {
+  .top-bar img {
     width: 40px;
     margin-right: 10px;
-}
+  }
 
-.top-bar h1 {
-    font-family: 'Nunito', sans-serif;
-    color: #F06292;
+  .top-bar h1 {
+    font-family: "Nunito", sans-serif;
+    color: #f06292;
     font-size: 1.2rem;
-}
+  }
 
-.signup-form {
+  .signup-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
+  }
 
-.section {
+  .section {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
@@ -59,177 +59,177 @@ body {
     border-radius: 5px;
     padding: 1rem;
     background-color: #f9f9f9;
-}
+  }
 
-.section h3 {
+  .section h3 {
     font-size: 1.1rem;
-    color: #00796B;
-}
+    color: #00796b;
+  }
 
-.section label {
+  .section label {
     font-size: 0.9rem;
     color: #555;
-}
+  }
 
-/* Styles for Full Name Input */
-.input-fullName {
+  /* Styles for Full Name Input */
+  .input-fullName {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for Date of Birth Input */
-.input-dob {
+  /* Styles for Date of Birth Input */
+  .input-dob {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for Gender Input */
-.input-gender {
+  /* Styles for Gender Input */
+  .input-gender {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for Qualification Input */
-.input-qualification {
+  /* Styles for Qualification Input */
+  .input-qualification {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for License Number Input */
-.input-license {
+  /* Styles for License Number Input */
+  .input-license {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for Hospital Name Input */
-.input-hospital {
+  /* Styles for Hospital Name Input */
+  .input-hospital {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for Experience Input */
-.input-experience {
+  /* Styles for Experience Input */
+  .input-experience {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-.input-address {
+  .input-address {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for City Input */
-.input-city {
+  /* Styles for City Input */
+  .input-city {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for State Input */
-.input-state {
+  /* Styles for State Input */
+  .input-state {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-.input-nationality {
+  .input-nationality {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 39%;
-}
+  }
 
-/* Styles for Create Password Input */
-.input-password-create {
+  /* Styles for Create Password Input */
+  .input-password-create {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-/* Styles for Confirm Password Input */
-.input-password-confirm {
+  /* Styles for Confirm Password Input */
+  .input-password-confirm {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 100%;
-}
+  }
 
-.inline-group-mobile-email {
+  .inline-group-mobile-email {
     display: flex;
-    justify-content: space-between; 
-}
+    justify-content: space-between;
+  }
 
-.input-mobile,
-.input-email {
+  .input-mobile,
+  .input-email {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
     width: 350px;
-}
+  }
 
-.inline-group {
+  .inline-group {
     display: flex;
     gap: 1rem;
-}
+  }
 
-.inline-group > div {
+  .inline-group > div {
     flex: 1;
-}
+  }
 
-.inline-group .half-width {
+  .inline-group .half-width {
     width: 48%;
-}
+  }
 
-.inline-group label {
+  .inline-group label {
     margin-bottom: 0.5rem;
-}
+  }
 
-.terms {
+  .terms {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
+  }
 
-.terms label {
+  .terms label {
     font-size: 0.9rem;
     color: #555;
-}
+  }
 
-/* Adjusted CSS for the Sign Up button */
-.button { 
+  /* Adjusted CSS for the Sign Up button */
+  .button {
     display: flex;
     justify-content: flex-end;
     position: absolute;
@@ -243,13 +243,13 @@ body {
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
     transition: background-color 0.3s ease;
-}
+  }
 
-.submit-container button:hover {
-    background-color: #004D40;
-}
+  .submit-container button:hover {
+    background-color: #004d40;
+  }
 
-.back-arrow-signup {
+  .back-arrow-signup {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -257,7 +257,7 @@ body {
     height: 8vw;
     max-width: 70px;
     max-height: 70px;
-    background-color: #00796B;
+    background-color: #00796b;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -266,37 +266,48 @@ body {
     font-size: 2vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+  }
 
-.back-arrow-signup:hover {
-    background-color: #004D40;
-}
+  .back-arrow-signup:hover {
+    background-color: #004d40;
+  }
 
-.nation {
-    width: 100%; 
-}
-.inline-group::after {
+  .nation {
+    width: 100%;
+  }
+  .inline-group::after {
     content: "";
     display: table;
     clear: both;
-}
+  }
 
-.inline-group::after {
+  .inline-group::after {
     content: "";
     display: table;
     clear: both;
-}
-.inline-group {
+  }
+  .inline-group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-}
+  }
 
-.half-width {
+  .half-width {
     flex: 1;
     margin-right: 10px;
-}
+  }
 
-.half-width:last-child {
+  .half-width:last-child {
     margin-right: 0;
-}
+  }
+
+  .required {
+    color: red;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block;
+  }

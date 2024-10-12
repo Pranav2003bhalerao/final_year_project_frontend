@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Patient Management - Cardiac.ai</title>
+    <title>Doctor Dashboard - Cardiac.ai</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap"
       rel="stylesheet"
@@ -84,7 +84,7 @@
       }
 
       .nav-menu li {
-        margin-bottom: 20px;
+        margin-bottom: 4px;
       }
 
       .nav-menu li a {
@@ -107,6 +107,7 @@
         width: 30px;
         margin-right: 10px;
       }
+
       .top-bar {
         display: flex;
         justify-content: space-between;
@@ -128,14 +129,44 @@
         align-items: center;
       }
 
+      .top-bar .icons .icon-container {
+        position: relative;
+        margin-right: 20px;
+      }
+
       .top-bar .icons img {
         width: 30px;
         cursor: pointer;
       }
 
+      .dropdown {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 40px; /* Adjust based on your design */
+        right: 0;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1000;
+        min-width: 150px; /* Minimum width to prevent wrapping */
+        white-space: nowrap; /* Prevent wrapping */
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .dropdown a:hover {
+        background-color: #f06292;
+        color: white;
+      }
+
       .banner {
         width: 97%;
-        height: 55px;
+        height: 60px;
         background-color: #00695c;
         color: white;
         border-radius: 20px;
@@ -152,13 +183,12 @@
       }
 
       .banner img {
-        height: 100%;
+        height: 90%;
         border-radius: 50%;
         margin-right: 20px;
       }
 
-      .patients-list {
-        margin-top: 20px;
+      .patients-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
@@ -168,8 +198,10 @@
         background-color: #ffffff;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .patient-card img {
@@ -179,14 +211,24 @@
         margin-bottom: 10px;
       }
 
-      .patient-card h4 {
+      .patient-info {
+        text-align: center;
+      }
+
+      .patient-info h4 {
         margin: 0;
         color: #f06292;
       }
 
-      .patient-card p {
+      .patient-info p {
         margin: 5px 0;
         color: #666;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
       }
 
       .button {
@@ -197,11 +239,75 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
-        margin-top: 10px;
       }
 
       .button:hover {
         background-color: #d81b60;
+      }
+
+      .alerts-container {
+        margin-top: 20px;
+      }
+
+      .alert {
+        background-color: #ffebee;
+        border-left: 5px solid #f44336;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .alert h5 {
+        margin: 0;
+        color: #f44336;
+      }
+
+      /* Footer styling */
+      .site-footer {
+        background-color: #f2f5f7;
+        padding: 20px;
+        font-size: 18px;
+        color: #666;
+        border-top: 1px solid #dcdcdc;
+        position: relative;
+        width: 100%;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 0;
+      }
+
+      .footer-container p {
+        margin: 0;
+        padding-right: 10px; /* Adjust this padding to reduce the gap */
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        gap: 30px; /* Adjust this gap if needed */
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-links li {
+        display: inline;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #666;
+        font-size: 20px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+        color: #333;
       }
     </style>
   </head>
@@ -218,7 +324,7 @@
         <nav class="nav-menu">
           <ul>
             <li>
-              <a href="doctorhome.html"
+              <a href="4doctordashboard.html"
                 ><img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpToiq1IGChAGKq7qXRHs9QzNS1sAShPeUmQ&s"
                   alt="Dashboard Icon"
@@ -251,122 +357,169 @@
       <!-- Main Content -->
       <div class="main-content">
         <div class="top-bar">
-          <input type="text" placeholder="Search by patient name" />
+          <input type="text" placeholder="Search by name" aria-label="Search" />
           <div class="icons">
-            <div class="icon-container">
+            <!-- Call Icon with Dropdown -->
+            <div
+              class="icon-container"
+              onclick="toggleDropdown('callDropdown')"
+            >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYOOfsnALGKUSKbIeEWZZLpMBsQbHpSIE1A&s"
                 alt="Call Icon"
               />
+              <!-- Call Dropdown Menu -->
+              <div id="callDropdown" class="dropdown">
+                <a href="#">Start a Call</a>
+                <a href="#">Call History</a>
+              </div>
             </div>
-            <div class="icon-container">
+
+            <!-- User Icon with Dropdown -->
+            <div
+              class="icon-container"
+              onclick="toggleDropdown('userDropdown')"
+            >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5PJ0YhcsnhpSO523cL4YfggXFa9J4EB2Fg&s"
                 alt="User Icon"
               />
+              <!-- User Dropdown Menu -->
+              <div id="userDropdown" class="dropdown">
+                <a href="#">Profile</a>
+                <!-- <a href="#" onclick="logout()">Logout</a> -->
+              </div>
             </div>
           </div>
         </div>
 
         <div class="banner">
-          <h1>Patient Management</h1>
+          <h1>Welcome, Doctor!</h1>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSloGK_2XGnk8OEi0J90mrqWpwx0oZollqNsKHudodp1Bp3zAt2"
             alt="Doctor"
           />
         </div>
 
-        <div class="patients-list">
+        <h2>Emergency Patient List</h2>
+        <div class="patients-container">
           <div class="patient-card">
-            <img src="https://via.placeholder.com/80" alt="John Doe" />
-            <h4>John Doe</h4>
-            <p>Status: Good</p>
-            <p>ECG Reading: 72 bpm</p>
-            <button class="button" onclick="showECGGraph('John Doe')">
-              Show ECG Graph
-            </button>
-            <button class="button" onclick="redirectToReport()">
-                Generate Report
-            </button>
+            <img src="https://via.placeholder.com/80" alt="Profile Photo" />
+            <div class="patient-info">
+              <h4>John Doe</h4>
+              <p>Status: Emergency</p>
+              <p>ECG Reading: 130 bpm</p>
+            </div>
+            <div class="buttons">
+              <a href="report.html" class="button">Generate Report</a>
+              <button class="button">Show ECG Graph</button>
+            </div>
           </div>
           <div class="patient-card">
-            <img src="https://via.placeholder.com/80" alt="Jane Smith" />
-            <h4>Jane Smith</h4>
-            <p>Status: Monitor</p>
-            <p>ECG Reading: 78 bpm</p>
-            <button class="button" onclick="showECGGraph('Jane Smith')">
-              Show ECG Graph
-            </button>
-            <button class="button" onclick="redirectToReport()">
-                Generate Report
-            </button>
+            <img src="https://via.placeholder.com/80" alt="Profile Photo" />
+            <div class="patient-info">
+              <h4>John Doe</h4>
+              <p>Status: Emergency</p>
+              <p>ECG Reading: 130 bpm</p>
+            </div>
+            <div class="buttons">
+              <a href="report.html" class="button">Generate Report</a>
+              <button class="button">Show ECG Graph</button>
+            </div>
+          </div>
+
+          <div class="patient-card">
+            <img src="https://via.placeholder.com/80" alt="Profile Photo" />
+            <div class="patient-info">
+              <h4>Jane Smith</h4>
+              <p>Status: Critical</p>
+              <p>ECG Reading: 150 bpm</p>
+            </div>
+            <div class="buttons">
+              <a href="report.html" class="button">Generate Report</a>
+              <button class="button">Show ECG Graph</button>
+            </div>
           </div>
           <div class="patient-card">
-            <img src="https://via.placeholder.com/80" alt="Mark Johnson" />
-            <h4>Mark Johnson</h4>
-            <p>Status: Needs Attention</p>
-            <p>ECG Reading: 85 bpm</p>
-            <button class="button" onclick="showECGGraph('Mark Johnson')">
-              Show ECG Graph
-            </button>
-            
-            <button class="button" onclick="redirectToReport()">
-                Generate Report
-            </button>
+            <img src="https://via.placeholder.com/80" alt="Profile Photo" />
+            <div class="patient-info">
+              <h4>Mark Johnson</h4>
+              <p>Status: Needs Immediate Attention</p>
+              <p>ECG Reading: 120 bpm</p>
+            </div>
+            <div class="buttons">
+              <a href="report.html" class="button">Generate Report</a>
+              <button class="button">Show ECG Graph</button>
+            </div>
           </div>
-          <div class="patient-card">
-            <img src="https://via.placeholder.com/80" alt="Emily Davis" />
-            <h4>Emily Davis</h4>
-            <p>Status: Good</p>
-            <p>ECG Reading: 70 bpm</p>
-            <button class="button" onclick="showECGGraph('Emily Davis')">
-              Show ECG Graph
-            </button>
-            <button class="button" onclick="redirectToReport()">
-                Generate Report
-            </button>
-          </div>
-          <!-- Add more patient cards as needed -->
-           
-    <div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis explicabo quaerat dolore quas reiciendis voluptate. Officiis temporibus qui, eveniet aspernatur aliquam minima vel veritatis consequatur, ex, quod iste facere. Reprehenderit.
-        </p>
-    
-    </div>
         </div>
+
+        <div class="alerts-container">
+          <h2>Recent Alerts</h2>
+          <div class="alert">
+            <h5>Alert: Jane Smith's Heart Rate Critical!</h5>
+            <p>Immediate action required.</p>
+          </div>
+          <div class="alert">
+            <h5>Alert: Mark Johnson's Blood Pressure Elevated!</h5>
+            <p>Consider follow-up.</p>
+          </div>
+        </div>
+        <hr>
+        <footer class="site-footer">
+          <div class="footer-container">
+            <p>
+              2024 Cardiac.ai Free Online Health Monitoring, All
+              Rights Reserved.
+            </p>
+            <ul class="footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </footer>
       </div>
     </div>
-
     <script>
-      // Function to display ECG graph (placeholder for actual implementation)
-      function showECGGraph(patientName) {
-        alert("Displaying ECG graph for " + patientName);
+      function toggleDropdown(dropdownId) {
+        const dropdowns = document.querySelectorAll(".dropdown");
+        dropdowns.forEach((dropdown) => {
+          if (dropdown.id !== dropdownId) {
+            dropdown.style.display = "none"; // Hide other dropdowns
+          }
+        });
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block"; // Toggle the selected dropdown
       }
 
-      // Toggle dropdown for call and user icons
-      document.querySelectorAll(".icon-container").forEach((container) => {
-        container.addEventListener("click", function (event) {
-          const dropdown = this.querySelector(".dropdown");
-          dropdown.style.display =
-            dropdown.style.display === "block" ? "none" : "block";
-          event.stopPropagation();
-        });
-      });
+      function logout() {
+        // Send a logout request to the server
+        fetch("/logout", { method: "POST", credentials: "include" })
+          .then((response) => {
+            if (response.ok) {
+              // Redirect to the login page or home page after logout
+              window.location.href = "login.html"; // Change this to your login page
+            } else {
+              alert("Logout failed. Please try again.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error during logout:", error);
+            alert("Logout failed. Please try again.");
+          });
+      }
 
-      // Close dropdowns if clicked outside
+      // Optional: Close dropdown if clicked outside
       window.onclick = function (event) {
         if (!event.target.matches(".icon-container img")) {
           const dropdowns = document.querySelectorAll(".dropdown");
           dropdowns.forEach((dropdown) => {
-            dropdown.style.display = "none";
+            dropdown.style.display = "none"; // Hide all dropdowns
           });
         }
       };
-
-      function redirectToReport() {
-            window.location.href = 'report.html'; // Change this to your report page URL
-        }
     </script>
   </body>
 </html>
